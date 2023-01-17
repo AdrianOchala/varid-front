@@ -1,5 +1,6 @@
 <template>
     <v-app>
+        <navigation></navigation>
         <v-main>
             <router-view/>
         </v-main>
@@ -10,6 +11,9 @@
 
 export default {
     name: 'App',
+    components: {
+        navigation: () => import('./components/NavigationComponent.vue')
+    },
     data() {
         return {
 
