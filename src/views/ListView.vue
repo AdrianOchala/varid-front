@@ -5,10 +5,18 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 export default {
-	name: 'ListView'
-
-	}
+	name: 'ListView',
+    computed: {
+        ...mapGetters({
+            dogs: 'dogs/getDogs'
+        })
+    },
+    created() {
+        console.log("Created ListView Dogs:", this.dogs)
+    }
+}
 </script>
 
 <style>
