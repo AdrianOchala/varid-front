@@ -19,14 +19,14 @@
             <v-btn
                 color="blue"
                 outlined
-                @click="editDog"
+                @click="$emit('editDog')"
             >
                 Edit
             </v-btn>
             <v-btn
                 color="red"
                 outlined
-                @click="deleteDog"
+                @click="$emit('deleteDog')"
             >
                 Delete
             </v-btn>
@@ -41,19 +41,7 @@ export default {
         item: {
             type: Object,
             default: null
-        },
-        index: {
-            type: Number,
-            default: null
         }
-    },
-    methods: {
-        deleteDog() {
-            console.log("Deleting dog of index: " + this.index)
-        },
-        editDog() {
-            console.log("Editing dog of index: " + this.index)
-        },
     }
 }
 </script>

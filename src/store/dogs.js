@@ -19,11 +19,17 @@ export default {
     mutations: {
         addDog (state, payload) {
             state.dogs.push(payload);
+        },
+        deleteDog (state, payload) {
+            state.dogs.splice(payload.index, 1);
         }
     },
     actions: {
         addDog ({commit}, payload) {
             commit('addDog', payload)
+        },
+        deleteDog ({commit}, payload) {
+            commit('deleteDog', payload)
         }
     }
 }

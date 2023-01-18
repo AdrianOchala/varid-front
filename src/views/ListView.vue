@@ -5,7 +5,8 @@
             <list-item v-for="(dog, index) in dogs" 
                 :key="'dog-'+index" 
                 :item="dog" 
-                :index="index"
+                v-on:deleteDog="deleteDog(index)"
+                v-on:editDog="editDog(index)"
             ></list-item>
         </div>
         <div class="d-flex justify-center flex-wrap" v-else>
@@ -15,7 +16,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 export default {
 	name: 'ListView',
     components:{
@@ -25,10 +26,20 @@ export default {
         ...mapGetters({
             dogs: 'dogs/getDogs'
         })
+    },
+    methods: {
+        ...mapActions({
+            deleteModal: 'modal/manageDeleteModal'
+        }),
+        deleteDog(index) {
+            this.deleteModal({
+                show: true,
+                index: index
+            })
+        },
+        editDog(index) {
+            console.log("Edit dog with id: ", index)
+        }
     }
 }
 </script>
-
-<style>
-
-</style>
