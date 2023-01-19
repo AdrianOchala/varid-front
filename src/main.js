@@ -5,9 +5,17 @@ import store from './store'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import vuetify from './plugins/vuetify'
-
+import helpers from './plugins/helpers'
 Vue.config.productionTip = false
 
+const helpersPlugin = {
+    install () {
+        Vue.helpers = helpers;
+        Vue.prototype.$helpers = helpers
+    }
+}
+
+Vue.use(helpersPlugin);
 Vue.use(VueAxios, axios)
 
 new Vue({

@@ -7,7 +7,7 @@ export default {
                 breed: 'Poodle Standard',
                 age: 5,
                 description: 'Medium size dog, white color.',
-                photoLink: 'https://images.dog.ceo/breeds/poodle-standard/n02113799_489.jpg'
+                photoUrl: 'https://images.dog.ceo/breeds/poodle-standard/n02113799_489.jpg'
             }
         ]
     },

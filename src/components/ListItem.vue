@@ -5,7 +5,7 @@
     >
         <v-img 
             height="250"
-            :src="item.photoLink"
+            :src="item.photoUrl"
         ></v-img>
         <v-card-title class="pb-0">{{ item.name }}</v-card-title>
         <v-card-text>
