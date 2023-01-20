@@ -38,7 +38,7 @@ export default {
             })
         },
         editDog(index) {
-            console.log("Edit dog with id: ", index)
+            this.$router.push({name: 'editDog', params:{dogID: index}});
         }
     }
 }

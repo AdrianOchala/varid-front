@@ -14,6 +14,9 @@ export default {
     getters: {
         getDogs (state) {
             return state.dogs;
+        },
+        getDog: (state) => (index) => {
+            return state.dogs[index];
         }
     },
     mutations: {
@@ -22,14 +25,24 @@ export default {
         },
         deleteDog (state, payload) {
             state.dogs.splice(payload.index, 1);
+        },
+        editDog (state, payload) {
+            state.dogs[payload.index].name        = payload.name;
+            state.dogs[payload.index].breed       = payload.breed;
+            state.dogs[payload.index].age         = payload.age;
+            state.dogs[payload.index].description = payload.description;
+            state.dogs[payload.index].photoUrl    = payload.photoUrl;
         }
     },
     actions: {
         addDog ({commit}, payload) {
-            commit('addDog', payload)
+            commit('addDog', payload);
         },
         deleteDog ({commit}, payload) {
-            commit('deleteDog', payload)
+            commit('deleteDog', payload);
+        },
+        editDog ({commit}, payload) {
+            commit('editDog', payload);
         }
     }
 }

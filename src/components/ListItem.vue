@@ -8,7 +8,7 @@
             min-height="250"
             :src="item.photoUrl"
         ></v-img>
-        <v-card-title class="pb-0">{{ item.name }}</v-card-title>
+        <v-card-title class="pb-0">{{ item.name }} {{ item.age ? '('+item.age+' yo)' : ''}}</v-card-title>
         <v-card-text>
             <div class="pt-0 text-subtitle-1">
                 {{ item.breed }}

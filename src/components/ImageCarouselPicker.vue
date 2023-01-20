@@ -9,7 +9,8 @@
             class="pa-4"
             show-arrows
             mandatory
-            v-if="!dataLoading"
+            @click="dogFinalBreed"
+            v-if="dataLoaded"
         >
             <v-slide-item
                 v-for="(item, index) in items"
@@ -34,7 +35,7 @@
         </v-slide-group>
         <v-expand-transition>
             <v-sheet
-                v-if="selectedItem != null && !dataLoading"
+                v-if="selectedItem != null && dataLoaded"
                 height="60"
                 tile
             >
@@ -43,9 +44,9 @@
                     align="center"
                     justify="center"
                 >
-                    <h3 class="text-h6">
+                    <di class="text-h6">
                         Selected breed: {{ dogFinalBreed(selectedItem) }}
-                    </h3>
+                    </di>
                 </v-row>
             </v-sheet>
         </v-expand-transition>
@@ -56,10 +57,6 @@
 export default {
     name: 'ImageCarouselPicker',
     props: {
-        selected: {
-            type: String,
-            default: ''
-        },
         itemsCategory: {
             type: String,
             default: ''
@@ -73,12 +70,6 @@ export default {
         }
     },
     watch: {
-        // selected: {
-        //     handler(val) {
-        //         this.selectedItem = val || null;
-        //     },
-        //     immediate: true
-        // },
         itemsCategory: {
             handler(val) {
                 if (val) this.getPhotos();
@@ -86,9 +77,14 @@ export default {
             immediate: true
         } 
     },
+    computed: {
+        dataLoaded() {
+            return this.items.length > 0 && !this.dataLoading ? true : false;
+        }
+    },
     methods: {
         getPhotos() {
-            this.dataLoading = true;
+            this.dataLoading  = true;
             this.selectedItem = null;
             this.axios.get(`https://dog.ceo/api/breed/${this.itemsCategory}/images/random/8`)
                 .then((res) => {
@@ -97,7 +93,7 @@ export default {
                 })
         },
         dogFinalBreed(index) {
-            this.$emit('change-selected', this.items[index]);
+            this.$emit('assign-photo', this.items[index]);
             var finalBreed = '';
             const existSubBreed = this.items[index].search(`/breeds/${this.itemsCategory}-`);
             if ( existSubBreed != -1) {
