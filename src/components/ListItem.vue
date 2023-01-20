@@ -1,10 +1,11 @@
 <template>
     <v-card
-        class="mx-2 my-12"
+        class="mx-2 my-12 d-flex flex-column"
         max-width="300"
     >
         <v-img 
-            height="250"
+            max-height="250"
+            min-height="250"
             :src="item.photoUrl"
         ></v-img>
         <v-card-title class="pb-0">{{ item.name }}</v-card-title>
@@ -15,6 +16,7 @@
             <v-divider class="mx-4"></v-divider>
             <div class="mt-2">{{ item.description }}</div>
         </v-card-text>
+        <v-spacer></v-spacer>
         <v-card-actions class="d-flex justify-center">
             <v-btn
                 color="blue"
